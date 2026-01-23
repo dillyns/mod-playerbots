@@ -170,6 +170,16 @@ void UnholyDKStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
     );
 }
 
+void UnholyDKNonCombatStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
+{
+    triggers.push_back(
+        new TriggerNode("no pet", { NextAction("raise dead", ACTION_NORMAL + 1) }));
+    triggers.push_back(
+        new TriggerNode("has pet", { NextAction("toggle pet spell", 60.0f) }));
+    triggers.push_back(
+        new TriggerNode("new pet", { NextAction("set pet stance", 60.0f) }));
+}
+
 void UnholyDKAoeStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
 {
     triggers.push_back(

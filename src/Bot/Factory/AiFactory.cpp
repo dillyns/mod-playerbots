@@ -572,6 +572,8 @@ void AiFactory::AddDefaultNonCombatStrategies(Player* player, PlayerbotAI* const
         case CLASS_DEATH_KNIGHT:
             if (tab == DEATH_KNIGHT_TAB_BLOOD)
                 nonCombatEngine->addStrategy("tank assist", false);
+            else if (tab == DEATH_KNIGHT_TAB_UNHOLY)
+                nonCombatEngine->addStrategiesNoInit("unholy", "dps assist", nullptr);
             else
                 nonCombatEngine->addStrategy("dps assist", false);
             break;

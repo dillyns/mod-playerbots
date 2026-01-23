@@ -7,6 +7,7 @@
 #define _PLAYERBOT_UNHOLYDKSTRATEGY_H
 
 #include "GenericDKStrategy.h"
+#include "NonCombatStrategy.h"
 
 class PlayerbotAI;
 
@@ -19,6 +20,15 @@ public:
     std::string const getName() override { return "unholy"; }
     std::vector<NextAction> getDefaultActions() override;
     uint32 GetType() const override { return STRATEGY_TYPE_COMBAT | STRATEGY_TYPE_DPS | STRATEGY_TYPE_MELEE; }
+};
+
+class UnholyDKNonCombatStrategy : public NonCombatStrategy
+{
+public:
+    UnholyDKNonCombatStrategy(PlayerbotAI* botAI) : NonCombatStrategy(botAI) {}
+
+    void InitTriggers(std::vector<TriggerNode*>& triggers) override;
+    std::string const getName() override { return "unholy"; }
 };
 
 class UnholyDKAoeStrategy : public CombatStrategy

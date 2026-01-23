@@ -51,6 +51,18 @@ private:
     static Strategy* blood(PlayerbotAI* botAI) { return new BloodDKStrategy(botAI); }
 };
 
+class DeathKnightNonCombatStrategyFactoryInternal : public NamedObjectContext<Strategy>
+{
+public:
+    DeathKnightNonCombatStrategyFactoryInternal() : NamedObjectContext<Strategy>(false, true)
+    {
+        creators["unholy"] = &DeathKnightNonCombatStrategyFactoryInternal::unholy;
+    }
+
+private:
+    static Strategy* unholy(PlayerbotAI* botAI) { return new UnholyDKNonCombatStrategy(botAI); }
+};
+
 class DeathKnightDKBuffStrategyFactoryInternal : public NamedObjectContext<Strategy>
 {
 public:
@@ -297,6 +309,7 @@ void DKAiObjectContext::BuildSharedStrategyContexts(SharedNamedObjectContextList
     AiObjectContext::BuildSharedStrategyContexts(strategyContexts);
     strategyContexts.Add(new DeathKnightStrategyFactoryInternal());
     strategyContexts.Add(new DeathKnightCombatStrategyFactoryInternal());
+    strategyContexts.Add(new DeathKnightNonCombatStrategyFactoryInternal());
     strategyContexts.Add(new DeathKnightDKBuffStrategyFactoryInternal());
 }
 
