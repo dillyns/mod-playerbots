@@ -222,7 +222,7 @@ bool SummonAction::Teleport(Player* summoner, Player* player, bool preserveAuras
                 {
                     player->GetGuardianPet()->NearTeleportTo(x, y, z, player->GetOrientation());
                 }
-               
+
                 if (botAI->HasStrategy("stay", botAI->GetState()))
                 {
                     PositionMap& posMap = AI_VALUE(PositionMap&, "position");
