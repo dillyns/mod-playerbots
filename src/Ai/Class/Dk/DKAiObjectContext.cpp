@@ -56,7 +56,7 @@ class DeathKnightNonCombatStrategyFactoryInternal : public NamedObjectContext<St
 public:
     DeathKnightNonCombatStrategyFactoryInternal() : NamedObjectContext<Strategy>(false, true)
     {
-        creators["unholy"] = &DeathKnightNonCombatStrategyFactoryInternal::unholy;
+        creators["unholy nc"] = &DeathKnightNonCombatStrategyFactoryInternal::unholy;
     }
 
 private:

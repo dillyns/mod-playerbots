@@ -28,7 +28,7 @@ public:
     UnholyDKNonCombatStrategy(PlayerbotAI* botAI) : NonCombatStrategy(botAI) {}
 
     void InitTriggers(std::vector<TriggerNode*>& triggers) override;
-    std::string const getName() override { return "unholy"; }
+    std::string const getName() override { return "unholy nc"; }
 };
 
 class UnholyDKAoeStrategy : public CombatStrategy
