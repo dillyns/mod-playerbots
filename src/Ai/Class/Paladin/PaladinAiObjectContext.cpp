@@ -148,6 +148,7 @@ public:
         creators["blessing of sanctuary on party"] = &PaladinTriggerFactoryInternal::blessing_of_sanctuary_on_party;
 
         creators["avenging wrath"] = &PaladinTriggerFactoryInternal::avenging_wrath;
+        creators["enough mana and almost full health"] = &PaladinTriggerFactoryInternal::enough_mana_and_almost_full_health;
     }
 
 private:
@@ -218,6 +219,10 @@ private:
     }
 
     static Trigger* avenging_wrath(PlayerbotAI* botAI) { return new AvengingWrathTrigger(botAI); }
+    static Trigger* enough_mana_and_almost_full_health(PlayerbotAI* botAI)
+    {
+        return new EnoughManaAndAlmostFullHealthTrigger(botAI);
+    }
 };
 
 class PaladinAiObjectContextInternal : public NamedObjectContext<Action>

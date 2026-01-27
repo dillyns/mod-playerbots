@@ -248,4 +248,13 @@ class AvengingWrathTrigger : public BoostTrigger
 public:
     AvengingWrathTrigger(PlayerbotAI* botAI) : BoostTrigger(botAI, "avenging wrath") {}
 };
+
+class EnoughManaAndAlmostFullHealthTrigger : public TwoTriggers
+{
+public:
+    EnoughManaAndAlmostFullHealthTrigger(PlayerbotAI* botAI)
+        : TwoTriggers(botAI, "enough mana", "almost full health")
+    {
+    }
+};
 #endif
