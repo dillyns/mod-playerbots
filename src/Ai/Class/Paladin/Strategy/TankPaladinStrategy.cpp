@@ -121,6 +121,14 @@ void TankPaladinStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
     );
     triggers.push_back(
         new TriggerNode(
+            "enough mana and almost full health",
+            {
+                NextAction("holy shield", ACTION_HIGH + 4)
+            }
+        )
+    );
+    triggers.push_back(
+        new TriggerNode(
             "medium health",
                 { NextAction("holy shield", ACTION_HIGH + 4)
             }

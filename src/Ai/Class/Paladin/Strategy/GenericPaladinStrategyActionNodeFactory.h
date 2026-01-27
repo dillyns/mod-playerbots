@@ -159,7 +159,7 @@ private:
     {
         return new ActionNode ("seal of wisdom",
             /*P*/ {},
-            /*A*/ { NextAction("seal of righteousness") },
+            /*A*/ {},
             /*C*/ {});
     }
     static ActionNode* seal_of_justice(PlayerbotAI* /* ai */)
