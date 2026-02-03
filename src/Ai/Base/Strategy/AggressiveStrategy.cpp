@@ -9,7 +9,6 @@
 
 void AggressiveStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
 {
-    NonCombatStrategy::InitTriggers(triggers);
     triggers.push_back(
         new TriggerNode(
             "no target",
