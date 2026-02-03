@@ -35,6 +35,14 @@ public:
     std::string const GetTargetName() override { return "tank target"; }
 };
 
+class AggressiveTargetAction : public AttackAction
+{
+public:
+    AggressiveTargetAction(PlayerbotAI* botAI) : AttackAction(botAI, "aggressive target") {}
+
+    std::string const GetTargetName() override { return "aggressive target"; }
+};
+
 class AttackAnythingAction : public AttackAction
 {
 public:
