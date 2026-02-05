@@ -25,7 +25,7 @@ Unit* AggressiveTargetValue::FindTargetForAggressive()
                    !GET_PLAYERBOT_AI(master)))
         master = nullptr;
 
-    GuidVector targets = *context->GetValue<GuidVector>("possible targets");
+    GuidVector targets = AI_VALUE(GuidVector, "possible targets");
     if (targets.empty())
         return nullptr;
 
@@ -36,7 +36,7 @@ Unit* AggressiveTargetValue::FindTargetForAggressive()
     for (ObjectGuid const guid : targets)
     {
         Unit* unit = botAI->GetUnit(guid);
-        if (!unit)
+        if (!unit || !unit->IsAlive())
             continue;
 
         if (!unit->IsInWorld() || unit->IsDuringRemoveFromWorld())
