@@ -20,14 +20,12 @@ class DeathKnightStrategyFactoryInternal : public NamedObjectContext<Strategy>
 public:
     DeathKnightStrategyFactoryInternal()
     {
-        creators["nc"] = &DeathKnightStrategyFactoryInternal::nc;
         creators["pull"] = &DeathKnightStrategyFactoryInternal::pull;
         creators["frost aoe"] = &DeathKnightStrategyFactoryInternal::frost_aoe;
         creators["unholy aoe"] = &DeathKnightStrategyFactoryInternal::unholy_aoe;
     }
 
 private:
-    static Strategy* nc(PlayerbotAI* botAI) { return new GenericDKNonCombatStrategy(botAI); }
     static Strategy* pull(PlayerbotAI* botAI) { return new PullStrategy(botAI, "icy touch"); }
     static Strategy* frost_aoe(PlayerbotAI* botAI) { return new FrostDKAoeStrategy(botAI); }
     static Strategy* unholy_aoe(PlayerbotAI* botAI) { return new UnholyDKAoeStrategy(botAI); }
@@ -56,10 +54,12 @@ class DeathKnightNonCombatStrategyFactoryInternal : public NamedObjectContext<St
 public:
     DeathKnightNonCombatStrategyFactoryInternal() : NamedObjectContext<Strategy>(false, true)
     {
+        creators["nc"] = &DeathKnightNonCombatStrategyFactoryInternal::nc;
         creators["unholy nc"] = &DeathKnightNonCombatStrategyFactoryInternal::unholy;
     }
 
 private:
+    static Strategy* nc(PlayerbotAI* botAI) { return new GenericDKNonCombatStrategy(botAI); }
     static Strategy* unholy(PlayerbotAI* botAI) { return new UnholyDKNonCombatStrategy(botAI); }
 };
 

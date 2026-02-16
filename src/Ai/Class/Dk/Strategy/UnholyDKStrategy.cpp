@@ -172,6 +172,8 @@ void UnholyDKStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
 
 void UnholyDKNonCombatStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
 {
+    GenericDKNonCombatStrategy::InitTriggers(triggers);
+
     triggers.push_back(
         new TriggerNode("no pet", { NextAction("raise dead", ACTION_NORMAL + 1) }));
     triggers.push_back(
