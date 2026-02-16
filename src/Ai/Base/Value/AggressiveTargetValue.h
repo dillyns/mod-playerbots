@@ -17,9 +17,6 @@ public:
     AggressiveTargetValue(PlayerbotAI* botAI, std::string const name = "aggressive target") : TargetValue(botAI, name) {}
 
     Unit* Calculate() override;
-
-private:
-    Unit* FindTargetForAggressive();
 };
 
 #endif

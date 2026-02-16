@@ -11,14 +11,6 @@
 
 Unit* AggressiveTargetValue::Calculate()
 {
-    if (bot->IsInCombat())
-        return nullptr;
-
-    return FindTargetForAggressive();
-}
-
-Unit* AggressiveTargetValue::FindTargetForAggressive()
-{
     Player* master = GetMaster();
 
     if (master && (master == bot || master->GetMapId() != bot->GetMapId() || master->IsBeingTeleported() ||
@@ -29,7 +21,7 @@ Unit* AggressiveTargetValue::FindTargetForAggressive()
     if (targets.empty())
         return nullptr;
 
-    float aggroRange = 30.0f;
+    float aggroRange = sPlayerbotAIConfig.aggroDistance;
     float distance = 0;
     Unit* result = nullptr;
 
