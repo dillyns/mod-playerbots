@@ -20,14 +20,12 @@ class DeathKnightStrategyFactoryInternal : public NamedObjectContext<Strategy>
 public:
     DeathKnightStrategyFactoryInternal()
     {
-        creators["nc"] = &DeathKnightStrategyFactoryInternal::nc;
         creators["pull"] = &DeathKnightStrategyFactoryInternal::pull;
         creators["frost aoe"] = &DeathKnightStrategyFactoryInternal::frost_aoe;
         creators["unholy aoe"] = &DeathKnightStrategyFactoryInternal::unholy_aoe;
     }
 
 private:
-    static Strategy* nc(PlayerbotAI* botAI) { return new GenericDKNonCombatStrategy(botAI); }
     static Strategy* pull(PlayerbotAI* botAI) { return new PullStrategy(botAI, "icy touch"); }
     static Strategy* frost_aoe(PlayerbotAI* botAI) { return new FrostDKAoeStrategy(botAI); }
     static Strategy* unholy_aoe(PlayerbotAI* botAI) { return new UnholyDKAoeStrategy(botAI); }
@@ -49,6 +47,20 @@ private:
     static Strategy* unholy_dps(PlayerbotAI* botAI) { return new UnholyDKStrategy(botAI); }
     static Strategy* tank(PlayerbotAI* botAI) { return new BloodDKStrategy(botAI); }
     static Strategy* blood(PlayerbotAI* botAI) { return new BloodDKStrategy(botAI); }
+};
+
+class DeathKnightNonCombatStrategyFactoryInternal : public NamedObjectContext<Strategy>
+{
+public:
+    DeathKnightNonCombatStrategyFactoryInternal() : NamedObjectContext<Strategy>(false, true)
+    {
+        creators["nc"] = &DeathKnightNonCombatStrategyFactoryInternal::nc;
+        creators["unholy nc"] = &DeathKnightNonCombatStrategyFactoryInternal::unholy;
+    }
+
+private:
+    static Strategy* nc(PlayerbotAI* botAI) { return new GenericDKNonCombatStrategy(botAI); }
+    static Strategy* unholy(PlayerbotAI* botAI) { return new UnholyDKNonCombatStrategy(botAI); }
 };
 
 class DeathKnightDKBuffStrategyFactoryInternal : public NamedObjectContext<Strategy>
@@ -297,6 +309,7 @@ void DKAiObjectContext::BuildSharedStrategyContexts(SharedNamedObjectContextList
     AiObjectContext::BuildSharedStrategyContexts(strategyContexts);
     strategyContexts.Add(new DeathKnightStrategyFactoryInternal());
     strategyContexts.Add(new DeathKnightCombatStrategyFactoryInternal());
+    strategyContexts.Add(new DeathKnightNonCombatStrategyFactoryInternal());
     strategyContexts.Add(new DeathKnightDKBuffStrategyFactoryInternal());
 }
 
