@@ -114,7 +114,7 @@ namespace ai::buff
                 time_t now = std::time(nullptr);
                 uint32 botLow = static_cast<uint32>(bot->GetGUID().GetCounter());
                 time_t& last = s_lastWarn[ std::make_pair(botLow, groupName) ];
-                if (!last || now - last >= sPlayerbotAIConfig.rpWarningCooldown) // Configurable anti-spam
+                if (sPlayerbotAIConfig.rpWarningCooldown > 0 && (!last || now - last >= sPlayerbotAIConfig.rpWarningCooldown)) // Configurable anti-spam
                 {
                     // DB Key choice in regard of the buff
                     std::string key;

@@ -479,6 +479,7 @@ AiPlayerbot.MinBotsForGreaterBuff = 3
 
 # Cooldown (seconds) between reagent-missing RP warnings, per bot & per buff
 # Default: 30
+#          0 - disabled 
 AiPlayerbot.RPWarningCooldown = 30
 
 #
