@@ -201,4 +201,5 @@ void BalanceDruidStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
     // Utility/Defensive
     triggers.push_back(new TriggerNode("medium mana", { NextAction("innervate", 29.0f) }));
     triggers.push_back(new TriggerNode("enemy too close for spell", { NextAction("flee", 39.0f) }));
+    triggers.push_back(new TriggerNode("auto pet attack", { NextAction("pet attack", 59.0f) }));
 }

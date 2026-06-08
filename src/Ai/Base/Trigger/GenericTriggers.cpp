@@ -53,15 +53,23 @@ bool HasPetTrigger::IsActive()
 
 bool PetAttackTrigger::IsActive()
 {
-    Guardian* pet = bot->GetGuardianPet();
+    Creature* pet = nullptr;
+    if (Pet* p = bot->GetPet())
+        pet = p;
+    else if (Guardian* g = bot->GetGuardianPet())
+        pet = g;
+
     if (!pet)
+        return false;
+
+    if (pet->GetReactState() == REACT_PASSIVE)
         return false;
 
     Unit* target = AI_VALUE(Unit*, "current target");
     if (!target)
         return false;
 
-    if (pet->GetVictim() == target && pet->GetCharmInfo()->IsCommandAttack())
+    if (pet->GetVictim() == target)
         return false;
 
     if (bot->GetMap()->IsDungeon() && bot->GetGroup() && !target->IsInCombat())

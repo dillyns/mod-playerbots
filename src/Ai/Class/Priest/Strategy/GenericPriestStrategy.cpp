@@ -42,6 +42,7 @@ void GenericPriestStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
     triggers.push_back(new TriggerNode("being attacked",
         { NextAction("power word: shield", ACTION_HIGH + 1) }));
     triggers.push_back(new TriggerNode("new pet", { NextAction("set pet stance", 60.0f) }));
+    triggers.push_back(new TriggerNode("auto pet attack", { NextAction("pet attack", 59.0f) }));
 }
 
 PriestCureStrategy::PriestCureStrategy(PlayerbotAI* botAI) : Strategy(botAI)

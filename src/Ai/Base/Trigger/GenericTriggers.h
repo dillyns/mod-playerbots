@@ -567,7 +567,7 @@ public:
 class PetAttackTrigger : public Trigger
 {
 public:
-    PetAttackTrigger(PlayerbotAI* botAI) : Trigger(botAI, "pet attack") {}
+    PetAttackTrigger(PlayerbotAI* botAI) : Trigger(botAI, "auto pet attack") {}
 
     virtual bool IsActive() override;
 };

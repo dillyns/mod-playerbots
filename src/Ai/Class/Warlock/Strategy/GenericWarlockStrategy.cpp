@@ -95,6 +95,14 @@ void GenericWarlockStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
             }
         )
     );
+    triggers.push_back(
+        new TriggerNode(
+            "auto pet attack",
+            {
+                NextAction("pet attack", 59.0f)
+            }
+        )
+    );
 }
 
 // ===== AoE Strategy, 3+ enemies =====

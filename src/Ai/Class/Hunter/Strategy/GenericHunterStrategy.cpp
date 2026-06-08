@@ -70,6 +70,7 @@ void GenericHunterStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
     triggers.push_back(new TriggerNode("medium threat", { NextAction("feign death", 35.0f) }));
     triggers.push_back(new TriggerNode("hunters pet medium health", { NextAction("mend pet", 22.0f) }));
     triggers.push_back(new TriggerNode("hunters pet low health", { NextAction("mend pet", 21.0f) }));
+    triggers.push_back(new TriggerNode("auto pet attack", { NextAction("pet attack", 59.0f) }));
 
     // Dispel Triggers
     triggers.push_back(new TriggerNode("tranquilizing shot enrage", { NextAction("tranquilizing shot", 61.0f) }));

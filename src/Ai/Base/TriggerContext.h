@@ -127,7 +127,7 @@ public:
         creators["combat party member dead"] = &TriggerContext::CombatPartyMemberDead;
         creators["no pet"] = &TriggerContext::no_pet;
         creators["has pet"] = &TriggerContext::has_pet;
-        creators["pet attack"] = &TriggerContext::pet_attack;
+        creators["auto pet attack"] = &TriggerContext::pet_attack;
 
         creators["has attackers"] = &TriggerContext::has_attackers;
         creators["no possible targets"] = &TriggerContext::no_possible_targets;

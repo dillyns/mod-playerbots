@@ -123,7 +123,12 @@ bool TogglePetSpellAutoCastAction::Execute(Event /*event*/)
 
 bool PetAttackAction::Execute(Event /*event*/)
 {
-    Guardian* pet = bot->GetGuardianPet();
+    Guardian* pet = nullptr;
+    if (Pet* p = bot->GetPet())
+        pet = p;
+    else if (Guardian* g = bot->GetGuardianPet())
+        pet = g;
+
     if (!pet)
         return false;
 
