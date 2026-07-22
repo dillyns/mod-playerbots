@@ -34,6 +34,40 @@ bool NoFirestarterStrategyTrigger::IsActive()
     return !botAI->HasStrategy("firestarter", BOT_STATE_COMBAT) || !CanFirestarterUseBlastWave(botAI);
 }
 
+bool ConjureWaterTrigger::IsActive()
+{
+    if (bot->IsInCombat())
+        return false;
+
+    if (!botAI->HasStrategy("food", botAI->GetState()))
+        return false;
+
+    if (!botAI->HasSpell("conjure water"))
+        return false;
+
+    return AI_VALUE2(std::vector<Item*>, "inventory items", "conjured water").empty();
+}
+
+bool MageGiveWaterTrigger::IsActive()
+{
+    if (bot->IsInCombat())
+        return false;
+
+    if (!bot->GetGroup())
+        return false;
+
+    if (!botAI->HasSpell("conjure water"))
+        return false;
+
+    if (botAI->HasSpell("ritual of refreshment"))
+        return false;
+
+    if (!AI_VALUE(Unit*, "party member without water"))
+        return false;
+
+    return true;
+}
+
 bool NoManaGemTrigger::IsActive()
 {
     static const std::vector<uint32> gemIds = {
